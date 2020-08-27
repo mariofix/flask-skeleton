@@ -1,5 +1,5 @@
 from flask import Flask
-
+from .database import init_db
 
 __version__ = "0.0.0"
 
@@ -15,6 +15,8 @@ def create_app(config):
     app = Flask(__name__, instance_relative_config=False)
     app.config.from_object(config)
 
+    init_db(app)
+    
     load_blueprints(app)
 
     return app

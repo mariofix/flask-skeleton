@@ -10,6 +10,7 @@ class Config:
     EXPLAIN_TEMPLATE_LOADING: bool = True
     BASE_DIR: str = os.path.abspath(os.path.dirname(__file__))
     REGISTER_CORE = True
+    DATABASE = str = None
 
     @staticmethod
     def init_app(app):
@@ -21,6 +22,7 @@ class DevConfig(Config):
     URL: str = f"https://dev.mariofix.com"
     SESSION_COOKIE_SECURE: bool = False
     REMEMBER_COOKIE_SECURE = False
+    DATABASE: str = "sqlite:///cthulhu.sqlite3"
 
 
 @dataclass
@@ -28,6 +30,7 @@ class TestConfig(Config):
     URL: str = f"https://dev.mariofix.com"
     SESSION_COOKIE_SECURE: bool = False
     REMEMBER_COOKIE_SECURE = False
+    DATABASE: str = "sqlite:///cthulhu.sqlite3"
 
 
 @dataclass
@@ -35,6 +38,7 @@ class ProdConfig(Config):
     URL: str = f"https://mariofix.com"
     SESSION_COOKIE_SECURE: bool = True
     REMEMBER_COOKIE_SECURE = True
+    DATABASE: str = "sqlite:///cthulhu.sqlite3"
 
 
 config = {
