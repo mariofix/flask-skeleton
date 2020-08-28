@@ -10,6 +10,7 @@ class Config:
     EXPLAIN_TEMPLATE_LOADING: bool = False
     BASE_DIR: str = os.path.abspath(os.path.dirname(__file__))
     REGISTER_CORE = True
+    DATABASE: str = None
 
     @staticmethod
     def init_app(app):
@@ -22,6 +23,7 @@ class DevConfig(Config):
     SESSION_COOKIE_SECURE: bool = False
     REMEMBER_COOKIE_SECURE: bool = False
     EXPLAIN_TEMPLATE_LOADING: bool = True
+    DATABASE: str = "sqlite:///cthulhu.sqlite3"
 
 
 @dataclass
@@ -32,6 +34,7 @@ class TestConfig(Config):
     EXPLAIN_TEMPLATE_LOADING: bool = True
     TESTING: bool = True
     SERVER_NAME: str = "localhost.localdomain:9000"
+    DATABASE: str = "sqlite:///cthulhu.sqlite3"
 
 
 @dataclass
@@ -40,6 +43,7 @@ class ProdConfig(Config):
     SESSION_COOKIE_SECURE: bool = True
     REMEMBER_COOKIE_SECURE: bool = True
     EXPLAIN_TEMPLATE_LOADING: bool = False
+    DATABASE: str = None
 
 
 config = {
